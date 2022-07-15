@@ -376,6 +376,8 @@ final public class XWorkBook{
                                 /// output empty cell
                                 hasimages = true
                                 colls.append("<c r=\"\(XSheet.EncodeNumberABC(col-1))\(row)\" s=\"\(cell.idStyle >= 0 ? cell.idStyle : 0)\" />")
+                            case .formula(let formula, let preVal):
+                                colls.append("<c r=\"\(XSheet.EncodeNumberABC(col-1))\(row)\" s=\"\(cell.idStyle)\" t=\"s\"><f>\(formula)</f><v>\(preVal)</v></c>")
                             }
                         }else{
                             colls.append("<c r=\"\(XSheet.EncodeNumberABC(col-1))\(row)\" s=\"\(cell.idStyle >= 0 ? cell.idStyle : 0)\" />")
