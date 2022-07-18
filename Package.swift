@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SwiftXLSX",
     platforms: [
-        .iOS(.v10),
+        .iOS(.v15.5),
         .macOS(.v11),
     ],
     products: [
@@ -15,7 +15,7 @@ let package = Package(
             targets: ["SwiftXLSX"]),
     ],
     dependencies: [
-        .package(name: "ZipArchive", url: "https://github.com/ZipArchive/ZipArchive.git", from: "2.3.0")
+        .package(name: "ZipArchive", url: "https://github.com/ZipArchive/ZipArchive.git", from: "2.5.0")
     ],
     targets: [
         .target(
