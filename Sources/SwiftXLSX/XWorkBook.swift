@@ -21,7 +21,7 @@ import Cocoa
 #else
 import UIKit
 #endif
-import ZipArchive
+import ZIPFoundation
 
 
 
@@ -681,13 +681,12 @@ final public class XWorkBook{
         
         
         let filepath = "\(CachePath)/\(filename)"
-        _ = SSZipArchive.createZipFile(atPath: filepath,
-                                       withContentsOfDirectory: BasePath,
-                                       keepParentDirectory: false,
-                                       compressionLevel: -1,
-                                       password: nil,
-                                       aes: true,
-                                       progressHandler: nil)
+        let fileManager = FileManager()
+        do {
+            try fileManager.zipItem(at: URL(fileURLWithPath: BasePath), to: URL(fileURLWithPath: filepath), shouldKeepParent: false)
+        } catch {
+            print("Creation of ZIP archive failed with error:\(error)")
+        }
         self.RemoveFile(path: BasePath)
         return filepath
     }

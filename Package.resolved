@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "ZipArchive",
-        "repositoryURL": "https://github.com/ZipArchive/ZipArchive.git",
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
         "state": {
           "branch": null,
-          "revision": "bc8bdb5216f9b37071a917025d76183a2ea41135",
-          "version": null
+          "revision": "43ec568034b3731101dbf7670765d671c30f54f3",
+          "version": "0.9.16"
         }
       }
     ]
