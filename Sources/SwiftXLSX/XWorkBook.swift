@@ -539,8 +539,7 @@ final public class XWorkBook{
             Xml.append("</cellXfs>")
         }
         
-        Xml.append("<cellStyles count=\"1\">")
-        Xml.append("<cellStyle name=\"Normal\" xfId=\"0\" builtinId=\"0\"/>")
+        Xml.append("<cellStyles count=\"1\"><cellStyle name=\"Standard\" xfId=\"0\" builtinId=\"0\"/></cellStyles>")
         Xml.append("<dxfs count=\"0\"/>")
         Xml.append("</styleSheet>")
         
