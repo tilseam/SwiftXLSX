@@ -486,17 +486,20 @@ final public class XWorkBook{
         let Xml:NSMutableString = NSMutableString()
         
         Xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n")
-        Xml.append("<styleSheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:x14ac=\"http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\">")
+        Xml.append("<styleSheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" mc:Ignorable=\"x14ac\" xmlns:x14ac=\"http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac\">")
 //        Xml.append("<numFmts count=\"0\"/>")
+        
         
         if Fonts.isEmpty {
             Xml.append("<fonts count=\"0\"/>")
         }else{
             Xml.append("<fonts count=\"\(Fonts.count)\">")
-            let ar = Fonts.values.sorted(by: {  $0.1 < $1.1})
-            for (font,_) in ar {
+            let ar = Set(Fonts.values.sorted(by: {  $0.1 < $1.1}).map({ $0.0 }))
+            
+            ar.forEach { font in
                 Xml.append(font)
             }
+            
             Xml.append("</fonts>")
         }
         
@@ -537,7 +540,7 @@ final public class XWorkBook{
         }
         
         Xml.append("<cellStyles count=\"1\">")
-        Xml.append("<cellStyle name=\"Normal\" xfId=\"0\" builtinId=\"0\"/></cellStyles>")
+        Xml.append("<cellStyle name=\"Normal\" xfId=\"0\" builtinId=\"0\"/>")
         Xml.append("<dxfs count=\"0\"/>")
         Xml.append("</styleSheet>")
         
