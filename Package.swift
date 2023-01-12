@@ -16,14 +16,24 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/weichsel/ZIPFoundation.git", "0.9.16"..<"1.0.0"),
-        .package(url: "https://github.com/apple/swift-collections.git", .upToNextMajor(from: "1.0.0"))
+        .package(
+              url: "https://github.com/apple/swift-collections.git",
+              .upToNextMajor(from: "1.0.0")
+            )
     ],
     targets: [
         .target(
             name: "SwiftXLSX",
-            dependencies: ["ZIPFoundation"]),
+            dependencies: [
+                .product(name: "Collections", package: "swift-collections"),
+                .product(name: "ZIPFoundation", package: "ZIPFoundation")
+            ]
+        ),
         .testTarget(
             name: "SwiftXLSXTests",
-            dependencies: ["SwiftXLSX"]),
+            dependencies: [
+                "SwiftXLSX"
+            ]
+        ),
     ]
 )

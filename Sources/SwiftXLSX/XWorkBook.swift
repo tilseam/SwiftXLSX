@@ -16,7 +16,7 @@
 //
 
 import Foundation
-import OrderedCollections
+import Collections
 #if os(macOS)
 import Cocoa
 #else
