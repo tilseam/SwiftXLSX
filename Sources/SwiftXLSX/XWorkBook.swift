@@ -16,6 +16,7 @@
 //
 
 import Foundation
+import OrderedCollections
 #if os(macOS)
 import Cocoa
 #else
@@ -31,7 +32,7 @@ final public class XWorkBook{
     // for styles
     private var Fonts:[UInt64:(String,Int)] = [:]
     private var Fills:[String] = []
-    private var colorsid:[String] = []
+    private var colorsid:OrderedSet<String> = []
     private var Bgcolor:[String] = []
     private var xfs:[UInt64:(String,Int)] = [:]
     private var Borders:[String] = []
