@@ -94,7 +94,7 @@ final public class XWorkBook{
                 idval += (UInt64(index)+1) * 1000000
             }else{
                 self.colorsid.append(hex)
-                idval += (UInt64(self.colorsid.count)+1) * 1000000
+                idval += UInt64(self.colorsid.count) * 1000000
             }
         }
         
