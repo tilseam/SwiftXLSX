@@ -97,8 +97,10 @@ final public class XWorkBook{
             }
         }
         
+        print("findFont:", font.Font, idval)
         if let (_,ind) = self.Fonts[idval] {
             cell.idFont = ind
+            print("findFont:", font.Font, idval, "found")
         }else{
             let xml = "<font>\(font.bold ? "<b/>" : "")\(font.italic ? "<i/>" : "")\(font.strike ? "<strike/>" : "")\(font.underline ? "<u/>" : "")<sz val=\"\(font.FontSize)\"/><color rgb=\"\(cell.color.Hex!)\"/><name val=\"\(font.Font)\"/></font>"
             
@@ -493,10 +495,10 @@ final public class XWorkBook{
         if Fonts.isEmpty {
             Xml.append("<fonts count=\"0\"/>")
         }else{
-            Xml.append("<fonts count=\"\(Fonts.count)\">")
-            let ar = Set(Fonts.values.sorted(by: {  $0.1 < $1.1}).map({ $0.0 }))
+            Xml.append("<fonts count=\"\(Fonts.count)\" x14ac:knownFonts=\"1\" >")
+            let ar = Fonts.values.sorted(by: {  $0.1 < $1.1})
             
-            ar.forEach { font in
+            for (font,_) in ar {
                 Xml.append(font)
             }
             
@@ -539,8 +541,10 @@ final public class XWorkBook{
             Xml.append("</cellXfs>")
         }
         
-        Xml.append("<cellStyles count=\"1\"><cellStyle name=\"Standard\" xfId=\"0\" builtinId=\"0\"/></cellStyles>")
+        Xml.append("<cellStyles count=\"1\"><cellStyle name=\"Normal\" xfId=\"0\" builtinId=\"0\"/></cellStyles>")
         Xml.append("<dxfs count=\"0\"/>")
+        Xml.append("<tableStyles count=\"0\" defaultTableStyle=\"TableStyleMedium2\" defaultPivotStyle=\"PivotStyleLight16\"/>")
+        Xml.append("<extLst><ext uri=\"{EB79DEF2-80B8-43e5-95BD-54CBDDF9020C}\" xmlns:x14=\"http://schemas.microsoft.com/office/spreadsheetml/2009/9/main\"><x14:slicerStyles defaultSlicerStyle=\"SlicerStyleLight1\"/></ext></extLst>")
         Xml.append("</styleSheet>")
         
         return String(Xml)
