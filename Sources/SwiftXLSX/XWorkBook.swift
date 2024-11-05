@@ -400,8 +400,7 @@ final public class XWorkBook{
             }
         }
       
-        
-        
+        Xml.append("</sheetData>")
         
         if sheet.mergecells.count > 0 {
             Xml.append("<mergeCells count=\"\(sheet.mergecells.count)\">")
@@ -410,8 +409,7 @@ final public class XWorkBook{
             }
             Xml.append("</mergeCells>")
         }
-        
-        Xml.append("</sheetData>")
+
         if hasimages {
             Xml.append("<drawing r:id=\"rId1\"/>")
         }
