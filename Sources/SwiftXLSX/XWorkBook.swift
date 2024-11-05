@@ -399,10 +399,7 @@ final public class XWorkBook{
                 Xml.append("</row>")
             }
         }
-        Xml.append("</sheetData>")
-        if hasimages {
-            Xml.append("<drawing r:id=\"rId1\"/>")
-        }
+      
         
         
         
@@ -412,6 +409,11 @@ final public class XWorkBook{
                 Xml.append("<mergeCell ref=\"\(addr)\"/>")
             }
             Xml.append("</mergeCells>")
+        }
+        
+        Xml.append("</sheetData>")
+        if hasimages {
+            Xml.append("<drawing r:id=\"rId1\"/>")
         }
         
         Xml.append("</worksheet>")
